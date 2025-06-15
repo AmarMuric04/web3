@@ -9,9 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as FavoritesRouteImport } from './routes/favorites'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CoinIdDetailsRouteImport } from './routes/$coinId/details'
+import { Route as CoinIdChartRouteImport } from './routes/$coinId/chart'
 
+const FavoritesRoute = FavoritesRouteImport.update({
+  id: '/favorites',
+  path: '/favorites',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardRoute = DashboardRouteImport.update({
   id: '/dashboard',
   path: '/dashboard',
@@ -22,35 +30,75 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CoinIdDetailsRoute = CoinIdDetailsRouteImport.update({
+  id: '/$coinId/details',
+  path: '/$coinId/details',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoinIdChartRoute = CoinIdChartRouteImport.update({
+  id: '/$coinId/chart',
+  path: '/$coinId/chart',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/favorites': typeof FavoritesRoute
+  '/$coinId/chart': typeof CoinIdChartRoute
+  '/$coinId/details': typeof CoinIdDetailsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/favorites': typeof FavoritesRoute
+  '/$coinId/chart': typeof CoinIdChartRoute
+  '/$coinId/details': typeof CoinIdDetailsRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dashboard': typeof DashboardRoute
+  '/favorites': typeof FavoritesRoute
+  '/$coinId/chart': typeof CoinIdChartRoute
+  '/$coinId/details': typeof CoinIdDetailsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard'
+  fullPaths:
+    | '/'
+    | '/dashboard'
+    | '/favorites'
+    | '/$coinId/chart'
+    | '/$coinId/details'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard'
-  id: '__root__' | '/' | '/dashboard'
+  to: '/' | '/dashboard' | '/favorites' | '/$coinId/chart' | '/$coinId/details'
+  id:
+    | '__root__'
+    | '/'
+    | '/dashboard'
+    | '/favorites'
+    | '/$coinId/chart'
+    | '/$coinId/details'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DashboardRoute: typeof DashboardRoute
+  FavoritesRoute: typeof FavoritesRoute
+  CoinIdChartRoute: typeof CoinIdChartRoute
+  CoinIdDetailsRoute: typeof CoinIdDetailsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/favorites': {
+      id: '/favorites'
+      path: '/favorites'
+      fullPath: '/favorites'
+      preLoaderRoute: typeof FavoritesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard': {
       id: '/dashboard'
       path: '/dashboard'
@@ -65,12 +113,29 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/$coinId/details': {
+      id: '/$coinId/details'
+      path: '/$coinId/details'
+      fullPath: '/$coinId/details'
+      preLoaderRoute: typeof CoinIdDetailsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$coinId/chart': {
+      id: '/$coinId/chart'
+      path: '/$coinId/chart'
+      fullPath: '/$coinId/chart'
+      preLoaderRoute: typeof CoinIdChartRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DashboardRoute: DashboardRoute,
+  FavoritesRoute: FavoritesRoute,
+  CoinIdChartRoute: CoinIdChartRoute,
+  CoinIdDetailsRoute: CoinIdDetailsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

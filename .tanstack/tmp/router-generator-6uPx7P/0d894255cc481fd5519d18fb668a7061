@@ -1,0 +1,9 @@
+import { createFileRoute } from '@tanstack/react-router'
+
+export const Route = createFileRoute('/$coinId')({
+  component: RouteComponent,
+})
+
+function RouteComponent() {
+  return <div>Hello "/$coinId"!</div>
+}
