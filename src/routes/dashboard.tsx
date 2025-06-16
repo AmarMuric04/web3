@@ -7,15 +7,20 @@ import {
   Eye,
   Star,
 } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "../components/ui/card";
+import { Button } from "../components/ui/button";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import type { CoinMarketData } from "@/types";
-import { CryptoTable } from "@/components/crypto-table";
+import type { CoinMarketData } from "../types";
+import { CryptoTable } from "../components/crypto-table";
 import { useAppDispatch, useAppSelector } from "@/hooks/redux";
-import { toggleFavoriteCoin } from "@/store/slices/coins-slice";
-import { ErrorStatus, LoadingStatus } from "@/components/async-statuses";
-import { formatLargeNumber } from "@/utility/formaters";
+import { toggleFavoriteCoin } from "../store/slices/coins-slice";
+import { ErrorStatus, LoadingStatus } from "../components/async-statuses";
+import { formatLargeNumber } from "../utility/formaters";
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
