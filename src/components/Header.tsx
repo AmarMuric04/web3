@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Bitcoin, Menu, X } from "lucide-react";
 import { UserAvatar } from "./user-avatar";
 import { ModeToggle } from "./mode-toggle";
-import { Button } from "@/components/ui/button";
+import { Button } from "./ui/button";
 import { useState } from "react";
 
 export default function Header() {
