@@ -108,8 +108,8 @@ export default function Landing() {
                             targetValue.includes("B")
                               ? "B"
                               : targetValue.includes("M")
-                              ? "M"
-                              : ""
+                                ? "M"
+                                : ""
                           }`
                         : `${Math.floor(currentValue).toLocaleString()}${
                             targetValue.includes("+") ? "+" : ""
@@ -241,7 +241,7 @@ export default function Landing() {
                 key={crypto.id}
                 className="relative overflow-hidden hover:shadow-lg transition-all duration-300 border-orange-200/30 group hover:scale-105"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/2" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-orange-500/5 to-orange-600/2" />
                 <CardHeader className="pb-3">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-3">
