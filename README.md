@@ -294,6 +294,6 @@ If you have any questions or need help with setup, please:
 
 ---
 
-**Built with by [Your Name]**
+**Built with love by Amar Muric**
 
 _Last updated: June 16, 2025_
