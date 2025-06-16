@@ -1,0 +1,10 @@
+{
+  "buildCommand": "pnpm run build",
+  "framework": "vite",
+  "installCommand": "pnpm install --shamefully-hoist --strict-peer-dependencies=false",
+  "functions": {
+    "app/[[...slug]]/page.tsx": {
+      "maxDuration": 30
+    }
+  }
+}
